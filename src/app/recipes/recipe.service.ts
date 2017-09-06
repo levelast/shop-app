@@ -8,6 +8,7 @@ import {ShoppingListService} from "../shopping-list/shopping-list.service";
 export class RecipeService {
   private recipes: Recipe[] = [
     new Recipe(
+      1,
       'A Test Recipe',
       'This is simply a test',
       'http://www.seriouseats.com/images/2015/09/20150914-pressure-cooker-recipes-roundup-09.jpg',
@@ -16,6 +17,7 @@ export class RecipeService {
         new Ingredient('French Fries', 20)
       ]),
     new Recipe(
+      2,
       'A Test Recipe 2',
       'This is simply a test 2',
       'http://www.seriouseats.com/images/2015/09/20150914-pressure-cooker-recipes-roundup-09.jpg',
@@ -36,5 +38,10 @@ export class RecipeService {
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.shoppingListService.addIngredients(ingredients);
+  }
+
+  getRecipe(id: number): Recipe {
+    return this.recipes.find(
+      (recipe: Recipe) => recipe.id === id);
   }
 }
